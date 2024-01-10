@@ -1,0 +1,12 @@
+@use '@/base';
+
+.rodape {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: base.$black;
+    padding: 1.1em;
+    p {
+        color: base.$white;
+    }
+}
