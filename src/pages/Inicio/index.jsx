@@ -5,7 +5,6 @@ import videos from "@/mocks/db.json";
 import styles from "./Inicio.module.scss";
 
 export default function Inicio() {
-  console.log(videos);
   return (
     <>
       <Banner imagem="home" />
