@@ -1,0 +1,23 @@
+@use '@/base';
+
+.container {
+    padding: 0 0 1em 0;
+    margin-top: .5rem;
+    width: 282px;
+    background-color: base.$gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    h2, .favoritar {
+        padding: 0 1em;
+    }
+}
+
+.capa {
+    width: 100%;
+}
+
+.favoritar {
+    width: 25px;
+}
+
