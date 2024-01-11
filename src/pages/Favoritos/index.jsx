@@ -1,10 +1,14 @@
-import styles from "./Favoritos.module.scss";
 import Banner from "@/components/Banner";
+import Card from "@/components/Card";
 import Titulo from "@/components/Titulo";
-import Card from "@/components/Card"
-import gatoBonifacio from '@/mocks/gatoBonifacio.json'
+import { FavoritosContext } from "@/contexts/Favoritos";
+import gatoBonifacio from "@/mocks/gatoBonifacio.json";
+import { useContext } from "react";
+import styles from "./Favoritos.module.scss";
 
 export default function Favoritos() {
+  const { favorito } = useContext(FavoritosContext);
+
   return (
     <>
       <Banner imagem="favoritos" />
@@ -12,7 +16,9 @@ export default function Favoritos() {
         <h1>Meus favoritos</h1>
       </Titulo>
       <section className={styles.container}>
-        <Card {...gatoBonifacio} />
+        {favorito.map((fav) => (
+          <Card {...fav} key={fav.id} />
+        ))}
       </section>
     </>
   );
