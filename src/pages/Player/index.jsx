@@ -1,16 +1,24 @@
 import Banner from "@/components/Banner";
 import Titulo from "@/components/Titulo";
-import styles from "./Player.module.scss";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import videos from "@/mocks/db.json";
 import NaoEncontrada from "../NaoEncontrada";
+import styles from "./Player.module.scss";
 
 export default function Player() {
+  const [video, setVideo] = useState();
   const params = useParams();
-  const video = videos.find((video) => video.id === Number(params.id));
 
-  if(!video) {
-    return <NaoEncontrada />
+  useEffect(() => {
+    fetch(
+      `https://my-json-server.typicode.com/devcanovas/api-cinetag/videos?id=${params.id}`
+    )
+      .then((response) => response.json())
+      .then((data) => setVideo(...data));
+  }, []);
+
+  if (!video) {
+    return <NaoEncontrada />;
   }
 
   return (

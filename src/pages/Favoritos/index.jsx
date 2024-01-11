@@ -2,7 +2,6 @@ import Banner from "@/components/Banner";
 import Card from "@/components/Card";
 import Titulo from "@/components/Titulo";
 import { FavoritosContext } from "@/contexts/Favoritos";
-import gatoBonifacio from "@/mocks/gatoBonifacio.json";
 import { useContext } from "react";
 import styles from "./Favoritos.module.scss";
 
