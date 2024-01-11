@@ -1,27 +1,30 @@
 import { useContext } from "react";
-import { FavoritosContext } from "../contexts/Favoritos";
+import { FavoritosContext } from "@/contexts/Favoritos";
 
 export default function useFavoritosContext() {
   const { favorito, setFavorito } = useContext(FavoritosContext);
 
   function adicionarFavorito(novoFavorito) {
+    const listaFavoritos = [...favorito];
     const favoritoJaExiste = favorito.some(
       (item) => item.id === novoFavorito.id
     );
 
-    const listaFavoritos = [...favorito];
-
     if (!favoritoJaExiste) {
-      listaFavoritos.push(novoFavorito);
-      return setFavorito(listaFavoritos);
+      return pushNovoFavorito(listaFavoritos, novoFavorito);
     }
 
-    novaLista = favorito.filter((fav) => fav.id !== novoFavorito.id);
+    const novaLista = favorito.filter((fav) => fav.id !== novoFavorito.id);
+    return setFavorito(novaLista);
+  }
+
+  function pushNovoFavorito(listaFavoritos, novoFavorito) {
+    listaFavoritos.push(novoFavorito);
     return setFavorito(listaFavoritos);
   }
 
   return {
-    favorito, 
-    adicionarFavorito
-  }
+    favorito,
+    adicionarFavorito,
+  };
 }

@@ -1,7 +1,10 @@
+import useFavoritosContext from "../../hooks/useFavoritosContext";
 import styles from "./Card.module.scss";
 import iconeFavoritar from "/imagens/favorite-outline.png"
 
 export default function Card({ id, titulo, capa }) {
+  const {favorito, adicionarFavorito} = useFavoritosContext();
+
   return (
     <div className={styles.container}>
       <img src={capa} alt={titulo} />
@@ -10,6 +13,9 @@ export default function Card({ id, titulo, capa }) {
         src={iconeFavoritar}
         alt="Favoritar filme"
         className={styles.favoritar}
+        onClick={() => {
+          adicionarFavorito({ id, titulo, capa })
+        }}
       />
     </div>
   );
